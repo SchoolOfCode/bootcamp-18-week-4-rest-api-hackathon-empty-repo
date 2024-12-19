@@ -5,12 +5,11 @@
 import express from "express";
 
 import {
-//   resetWeapons,
   getWeapons,
 //   getWeaponsByName,
 //   createWeapon,
 //   findWeaponIndexByID,
-//   getWeaponById,
+  getWeaponById,
 //   replaceWeaponById,
 } from "../helperFunctions/helperFunctions.js";
 
@@ -31,15 +30,22 @@ router.get("/", async (req, res) => {
     }
   });
 
-// router.get("/", async function (req, res) {
-//   const weapons = await getWeapons();
-//   res.status(200).json({
-//     success: true,
-//     payload: weapons,
-//   });
-// });
+/* Get all weapons by Id */
 
-// export default router;
+//listen for a get req, the route is /:id
+//after receiving, we need to get the matching astronaut to that id
+//res with that astronaut
+
+router.get("/:id", async function (req, res) {
+    try {
+        const id = req.params.id;
+        const oneWeapon = await getWeaponById(parseInt(id));
+        res.json(oneWeapon);
+    }
+    catch (error){
+        res.status(500).json({error: "Failed to fetch that weapon id" })
+    }
+  });
 
 
 
