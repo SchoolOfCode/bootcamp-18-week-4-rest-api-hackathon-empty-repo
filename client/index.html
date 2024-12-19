@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Skyrim Weapons Search</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="style.css" />
     <script src="app.js" defer></script>
   </head>
   <body>
@@ -22,27 +22,74 @@
         />
 
         <!--------------------- Dropdown Filters ------------------------->
+
         <select id="typeFilter" class="dropdown">
           <option value="">All Types</option>
-          <option value="One-Handed">One-Handed</option>
-          <option value="Two-Handed">Two-Handed</option>
-          <option value="Archery">Archery</option>
+          <option value="Battleaxe">Battleaxes</option>
+          <option value="Dagger">Daggers</option>
+          <option value="Mace">Maces</option>
+          <option value="Sword">Swords</option>
+          <option value="War Axe">War Axes</option>
+          <option value="Greatsword">Greatswords</option>
+          <option value="Warhammer">Warhammers</option>
+          <option value="Bow">Bows</option>
+          <option value="Crossbow">Crossbows</option>
+          <option value="Arrow">Arrows</option>
+          <option value="Bolt">Bolts</option>
+          <option value="Silverware">Silverware</option>
         </select>
 
         <select id="materialFilter" class="dropdown">
           <option value="">All Materials</option>
-          <option value="Iron">Iron</option>
-          <option value="Steel">Steel</option>
-          <option value="Elven">Elven</option>
-          <option value="Glass">Glass</option>
+          <option value="Steel Ingot">Steel Ingot</option>
+          <option value="Ebony Ingot">Ebony Ingot</option>
+          <option value="Dragon Bone">Dragon Bone</option>
+          <option value="Refined Moonstone">Refined Moonstone</option>
+          <option value="Refined Malachite">Refined Malachite</option>
+          <option value="Iron Ingot">Iron Ingot</option>
+          <option value="Orichalcum Ingot">Orichalcum Ingot</option>
+          <option value="Quicksilver Ingot">Quicksilver Ingot</option>
+          <option value="Stalhrim">Stalhrim</option>
+          <option value="Firewood">Firewood</option>
+          <option value="Dwarven Metal Ingot">Dwarven Metal Ingot</option>
+          <option value="Leather Strips">Leather Strips</option>
+          <option value="Chaurus Chitin">Chaurus Chitin</option>
+          <option value="N/A">N/A</option>
+          <option value="None">None</option>
+          <option value="3 Ectoplasm">3 Ectoplasm</option>
         </select>
+
+        <select id="categoriesFilter" class="dropdown">
+        <option value="">Any</option>
+        <option value="Two-Handed">Two-Handed</option>
+        <option value="One-Handed">One-Handed</option>
+        <option value="Archery">Archery</option>
+        </select>
+      </select>
 
         <!----------------------- Search Button------------------->
         <button id="searchButton" class="btn">Search</button>
       </div>
 
       <!--------------------- Results Container ----------------------->
-      <div id="results" class="results"></div>
+      <div id="results" class="results">
+        <table id="weaponsTable">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Upgrade Material</th>
+              <th>Damage</th>
+              <th>Weight</th>
+              <th>Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Rows will be dynamically added here -->
+          </tbody>
+        </table>
+      </div>
     </div>
   </body>
 </html>
