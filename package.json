@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "node server/bin/www.js",
-    "dev": "node --watch server/bin/www.js",
+    "dev": "node --watch --trace-warnings server/bin/www.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

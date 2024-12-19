@@ -1,4 +1,4 @@
-export const data = [
+export const weapons = [
     {
       "Name": "Ancient Nord Battle Axe",
       "Damage": "18",
