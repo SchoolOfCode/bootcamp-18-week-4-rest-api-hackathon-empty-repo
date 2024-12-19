@@ -88,6 +88,47 @@ document
 document
   .querySelector("#searchButton")
   .addEventListener("click", filterWeapons);
+//------------------------------------------------------adding new weapon
+document
+  .getElementById("addWeaponForm")
+  .addEventListener("submit", async function (e) {
+    e.preventDefault(); // Prevent default form submission behavior
+
+    // Collect form data
+    const newWeapon = {
+      Name: document.getElementById("name").value,
+      Type: document.getElementById("type").value,
+      Upgrade: document.getElementById("upgrade").value,
+      Damage: parseInt(document.getElementById("damage").value),
+      Weight: parseFloat(document.getElementById("weight").value),
+      Gold: parseInt(document.getElementById("gold").value),
+    };
+
+    console.log("Submitting new weapon:", newWeapon);
+
+    try {
+      // Send POST request to server
+      const response = await fetch("http://localhost:8080/weapons", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newWeapon),
+      });
+
+      if (!response.ok) throw new Error("Failed to add weapon");
+
+      const result = await response.json();
+      console.log("Weapon added successfully:", result);
+
+      // Optionally refresh the weapons table to include the new weapon
+      fetchAndDisplayWeapons();
+
+      // Clear the form fields
+      e.target.reset();
+    } catch (error) {
+      console.error("Error adding weapon:", error);
+      alert("Failed to add weapon. Please try again.");
+    }
+  });
 
 // Fetch data and display when the page loads
 window.onload = fetchAndDisplayWeapons;
