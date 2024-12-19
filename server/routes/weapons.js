@@ -10,6 +10,7 @@ import {
   createWeapon,
 //   findWeaponIndexByID,
   getWeaponById,
+  updateWeaponById,
 //   replaceWeaponById,
 } from "../helperFunctions/helperFunctions.js";
 
@@ -63,7 +64,23 @@ router.get("/:id", async function (req, res) {
     }
     });
 
+/* Update a Weapon */
+    
+// listen for a patch req, the route is /:id
+// after receiving, we need to store req.body in a var and params id with parseInt
+// call the  and replace the updated content
 
+router.patch("/:id", async function (req, res) {
+    try {
+        const id = req.params.id;
+        const updateData = req.body;
+        const updateWeapon = await updateWeaponById(parseInt(id), updateData);
+        res.json(updateWeapon);
+    }
+    catch (error){
+        res.status(500).json({error: `Failed to update weapon Id: ${id}`})
+    }
+  });
 
 
 export default router;
