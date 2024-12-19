@@ -7,7 +7,7 @@ import express from "express";
 import {
   getWeapons,
 //   getWeaponsByName,
-//   createWeapon,
+  createWeapon,
 //   findWeaponIndexByID,
   getWeaponById,
 //   replaceWeaponById,
@@ -46,6 +46,22 @@ router.get("/:id", async function (req, res) {
         res.status(500).json({error: "Failed to fetch that weapon id" })
     }
   });
+
+/* Create a new Weapon */
+
+// listen for a post req, the route is /
+// after receiving, we need to store req.body in a variable
+// res.json the new weapon into the array.
+
+  router.post("/", async function (req, res) {
+    try {
+        const newWeapon = await createWeapon(req.body);
+        res.status(201).json({newWeapon});
+    }
+    catch (error){
+        res.status(500).json({error: "Failed to create new weapon."})
+    }
+    });
 
 
 
