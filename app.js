@@ -1,21 +1,17 @@
-/* --- project initialise ---*/
-// npm init (-y) and then npm i express 
-// change package.json "type":"module" above "scripts"
-// create bin folder -> file called www.js
-// package.json "start": "node bin/www.js" (storing the PORT ie 8080)
-// package.json "dev": "node --watch bin/www.js"  -> npm run dev
-// import the dataset
+// Import the express module which is a web framework for Node.js
+import express from "express";
 
-/* --- imports ---*/
-// import express from express
+// Import the astronautsRouter from the specified path
+import weaponsRouter from "./routes/weapons.js";
 
+// Create an instance of an Express application
+const app = express();
 
+// Middleware to parse incoming JSON requests and make it available under req.body
+app.use(express.json());
 
-// Set Router as a variable from the express module (using sub routing)
+// Use the astronautsRouter for any requests to the /astronauts path
+app.use("/weapons", astronautsRouter);
 
-/* --- routes ---*/
-
-// GET all weapons
-// To listen for a "/" and calling an async function with a request and response
-// after receiving the request we get all the weapons and respond with a json format
-
+// Export the app instance so it can be used in other files
+export default app;
