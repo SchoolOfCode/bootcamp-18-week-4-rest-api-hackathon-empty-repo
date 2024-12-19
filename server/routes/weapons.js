@@ -68,7 +68,7 @@ router.get("/:id", async function (req, res) {
     
 // listen for a patch req, the route is /:id
 // after receiving, we need to store req.body in a var and params id with parseInt
-// call the  and replace the updated content
+// call the updateWeaponById function and replace weapon in the db with the updated content
 
 router.patch("/:id", async function (req, res) {
     try {
@@ -78,7 +78,7 @@ router.patch("/:id", async function (req, res) {
         res.json(updateWeapon);
     }
     catch (error){
-        res.status(500).json({error: `Failed to update weapon Id: ${id}`})
+        res.status(500).json({error: `Failed to update weapon.`})
     }
   });
 
