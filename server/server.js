@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json());
 
 // Use the weaponssRouter for any requests to the /weapons path
-app.use("/weapons", weaponssRouter);
+// app.use("/weapons", weaponsRouter);
 
 // Export the app instance so it can be used in other files
 export default app;
